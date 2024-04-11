@@ -1,4 +1,4 @@
-
+import React from 'react';
 import './App.css'
 import Nav from './components/navbar/nav.jsx'
 import Editor from './components/editor/editor.jsx'

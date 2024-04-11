@@ -2,6 +2,11 @@ import React, { useState, useEffect } from 'react';
 import MonacoEditor from 'react-monaco-editor';
 import './editor.css';
 
+
+import 'monaco-editor/esm/vs/basic-languages/html/html.contribution.js';
+import 'monaco-editor/esm/vs/basic-languages/css/css.contribution.js';
+import 'monaco-editor/esm/vs/basic-languages/javascript/javascript.contribution.js';
+
 const Editor = () => {
   const [htmlCode, setHtmlCode] = useState('');
   const [cssCode, setCssCode] = useState('');
@@ -36,7 +41,14 @@ const Editor = () => {
           theme="vs-dark"
           value={htmlCode}
           onChange={setHtmlCode}
-          options={{ automaticLayout: true }}
+          options={{
+            automaticLayout: true,
+            wordWrap: 'on', 
+            scrollBeyondLastLine: false, 
+            minimap: { enabled: false }, 
+            formatOnType: true, 
+            formatOnPaste: true,
+          }}
         />
       </div>
       <div className="editor-column">
@@ -46,7 +58,14 @@ const Editor = () => {
           theme="vs-dark"
           value={cssCode}
           onChange={setCssCode}
-          options={{ automaticLayout: true }}
+          options={{
+            automaticLayout: true,
+            wordWrap: 'on',
+            scrollBeyondLastLine: false,
+            minimap: { enabled: false },
+            formatOnType: true,
+            formatOnPaste: true,
+          }}
         />
       </div>
       <div className="editor-column">
@@ -56,7 +75,14 @@ const Editor = () => {
           theme="vs-dark"
           value={jsCode}
           onChange={setJsCode}
-          options={{ automaticLayout: true }}
+          options={{
+            automaticLayout: true,
+            wordWrap: 'on',
+            scrollBeyondLastLine: false,
+            minimap: { enabled: false },
+            formatOnType: true,
+            formatOnPaste: true,
+          }}
         />
       </div>
       <div className="output">
