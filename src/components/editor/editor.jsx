@@ -1,19 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import MonacoEditor from 'react-monaco-editor';
-import './editor.css';
+import React, { useState, useEffect } from "react";
+import { FaHtml5, FaCss3Alt, FaJs } from "react-icons/fa";
+import { MdOutlineOutput } from "react-icons/md";
+import MonacoEditor from "react-monaco-editor";
+import "./editor.css";
 
-
-import 'monaco-editor/esm/vs/basic-languages/html/html.contribution.js';
-import 'monaco-editor/esm/vs/basic-languages/css/css.contribution.js';
-import 'monaco-editor/esm/vs/basic-languages/javascript/javascript.contribution.js';
+import "monaco-editor/esm/vs/basic-languages/html/html.contribution.js";
+import "monaco-editor/esm/vs/basic-languages/css/css.contribution.js";
+import "monaco-editor/esm/vs/basic-languages/javascript/javascript.contribution.js";
 
 const Editor = () => {
-  const [htmlCode, setHtmlCode] = useState('');
-  const [cssCode, setCssCode] = useState('');
-  const [jsCode, setJsCode] = useState('');
+  const [htmlCode, setHtmlCode] = useState("");
+  const [cssCode, setCssCode] = useState("");
+  const [jsCode, setJsCode] = useState("");
 
   const runCode = () => {
-    const iframe = document.getElementById('output-frame');
+    const iframe = document.getElementById("output-frame");
     const iframeContent = `
       <html>
         <head>
@@ -35,7 +36,10 @@ const Editor = () => {
   return (
     <div className="code-editor-container">
       <div className="editor-column">
-        <h4>HTML</h4>
+        <h4>
+          <FaHtml5 />
+          HTML
+        </h4>
         <MonacoEditor
           language="html"
           theme="vs-dark"
@@ -43,16 +47,34 @@ const Editor = () => {
           onChange={setHtmlCode}
           options={{
             automaticLayout: true,
-            wordWrap: 'on', 
-            scrollBeyondLastLine: false, 
-            minimap: { enabled: false }, 
-            formatOnType: true, 
+            wordWrap: "on",
+            scrollBeyondLastLine: false,
+            minimap: { enabled: false },
+            formatOnType: true,
             formatOnPaste: true,
+            readOnly: false,
+            lineNumbers: "on",
+            roundedSelection: true,
+            cursorStyle: "line",
+            autoIndent: true,
+            dragAndDrop: true,
+            matchBrackets: true,
+            autoClosingBrackets: "always",
+            autoClosingQuotes: "always",
+            autoSurround: "languageDefined",
+            quickSuggestions: true,
+            suggestOnTriggerCharacters: true,
+            tabCompletion: "on",
+            wordBasedSuggestions: true,
           }}
         />
       </div>
       <div className="editor-column">
-        <h4>CSS</h4>
+        <h4>
+          {" "}
+          <FaCss3Alt />
+          CSS
+        </h4>
         <MonacoEditor
           language="css"
           theme="vs-dark"
@@ -60,16 +82,34 @@ const Editor = () => {
           onChange={setCssCode}
           options={{
             automaticLayout: true,
-            wordWrap: 'on',
+            wordWrap: "on",
             scrollBeyondLastLine: false,
             minimap: { enabled: false },
             formatOnType: true,
             formatOnPaste: true,
+            readOnly: false,
+            lineNumbers: "on",
+            roundedSelection: true,
+            cursorStyle: "line",
+            autoIndent: true,
+            dragAndDrop: true,
+            matchBrackets: true,
+            autoClosingBrackets: "always",
+            autoClosingQuotes: "always",
+            autoSurround: "languageDefined",
+            quickSuggestions: true,
+            suggestOnTriggerCharacters: true,
+            tabCompletion: "on",
+            wordBasedSuggestions: true,
           }}
         />
       </div>
       <div className="editor-column">
-        <h4>JavaScript</h4>
+        <h4>
+          {" "}
+          <FaJs />
+          JavaScript
+        </h4>
         <MonacoEditor
           language="javascript"
           theme="vs-dark"
@@ -77,17 +117,38 @@ const Editor = () => {
           onChange={setJsCode}
           options={{
             automaticLayout: true,
-            wordWrap: 'on',
+            wordWrap: "on",
             scrollBeyondLastLine: false,
             minimap: { enabled: false },
             formatOnType: true,
             formatOnPaste: true,
+            readOnly: false,
+            lineNumbers: "on",
+            roundedSelection: true,
+            cursorStyle: "line",
+            autoIndent: true,
+            dragAndDrop: true,
+            matchBrackets: true,
+            autoClosingBrackets: "always",
+            autoClosingQuotes: "always",
+            autoSurround: "languageDefined",
+            quickSuggestions: true,
+            suggestOnTriggerCharacters: true,
+            tabCompletion: "on",
+            wordBasedSuggestions: true,
           }}
         />
       </div>
       <div className="output">
-        <h4>Output</h4>
-        <iframe id="output-frame" title="Output" className="output-frame"></iframe>
+        <h4>
+          {" "}
+          <MdOutlineOutput /> Output
+        </h4>
+        <iframe
+          id="output-frame"
+          title="Output"
+          className="output-frame"
+        ></iframe>
       </div>
     </div>
   );

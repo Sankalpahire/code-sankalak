@@ -1,82 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
+*{
+  font-family: 'Source Code Pro', monospace;
+}
+
 body {
-    padding: 0;
-    margin: 0;
-    font-family: Arial, sans-serif;
-    overflow-x: hidden; 
-    background-color: #444;
-  }
-  
+  padding: 0;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden; 
+  background-color: #444;
+}
 
+.code-editor-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto 1fr;
+  gap: 20px;
+  height: 100vh;
+  width: 100%;
+}
+
+.editor-column {
+  display: flex;
+  height: 400px;
+  flex-direction: column;
+  background-color: #333;
+  border: 3px solid #444;
+  margin-top: 70px;
+  border-radius: 5px;
+
+}
+
+.editor-column h4 {
+  color: #ccc;
+  padding: 10px;
+  margin: auto;
+  border-bottom: 1px solid #444;
+}
+
+.monaco-editor {
+  flex: 1;
+  height: calc(100% - 40px); 
+}
+
+.output {
+  grid-column: span 3;
+  background-color: #f8f9fa; 
+  border: 1px solid #ccc;
+  border-radius: 5px;
+
+  height: 420px; 
+}
+
+.output h4 {
+  color: #444;
+  padding: 10px;
+  margin: 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.output-frame {
+  width: 100%;
+  height: calc(100% - 40px); 
+  border: none;
+}
+
+@media screen and (max-width: 768px) {
   .code-editor-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto 1fr;
-    gap: 20px;
-    height: 100vh;
-    width: 100%;
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 1fr 1fr; 
   }
-  
-  .editor-column {
-    display: flex;
-    height: 400px;
-    flex-direction: column;
-    background-color: #333;
-    border: 3px solid #444;
-    margin-top: 70px;
-    border-radius: 5px;
-    overflow: hidden; 
-  }
-  
-  .editor-column h4 {
-    color: #ccc;
 
-    padding: 10px;
-    margin: auto;
-    border-bottom: 1px solid #444;
+  .editor-column {
+    border-radius: 0; 
   }
-  
-  .monaco-editor {
-    flex: 1;
-    height: calc(100% - 40px); 
-  }
-  
-  .output {
-   
-    grid-column: span 3;
-    background-color: #f8f9fa; 
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    overflow: hidden; 
-    height: 420px; 
-  }
-  
+
+  .editor-column h4,
   .output h4 {
-    color: #444;
-    padding: 10px;
-    margin: 0;
-    border-bottom: 1px solid #ccc;
+    border-bottom: none; 
   }
-  
-  .output-frame {
-    width: 100%;
-    height: calc(100% - 40px); 
-    border: none;
+
+  .output {
+    grid-column: 2; 
+    grid-row: 1 / span 1; 
+    height: auto; 
+    margin-top: 75px;
   }
-  
-  /* Responsive Layout */
-  @media screen and (max-width: 768px) {
-    .code-editor-container {
-      grid-template-columns: 1fr;
-      grid-template-rows: auto auto 1fr;
-    }
-  
-    .editor-column {
-      border-radius: 0; 
-    }
-  
-    .editor-column h4,
-    .output h4 {
-      border-bottom: none; 
-    }
-  }
-  
+}
